@@ -312,8 +312,9 @@ inputSearch.addEventListener("keypress", function(event) {
 
 
 
+navigator.geolocation.getCurrentPosition(fetchData);
 
-async function fetchData() {
+async function fetchData(position) {
   loading.style.display = "block"
   content.style.display = "none"
  
@@ -321,16 +322,10 @@ async function fetchData() {
   
   let searchCity = document.getElementById("city-input").value
 //    let searchCity = ""
-  console.log(myLat, myLong, "INI ADALAHHH TEMPAT SAYA");
   if(searchCity === ""){
     searchCity = "JAKARTA"
-  }else{
-    searchCity = searchCity.toUpperCase();
   }
 
-  console.log(searchCity, "NAMA KOTAAA");
-
-  // let searchCity = "jakarta"
   let date = new Date();
   date = date.toDateString()
   try {
@@ -370,15 +365,14 @@ async function fetchData() {
             console.log("MASUK KESINI");
             curDesc =  wmo[curCode].day.description
             curImg = wmo[curCode].day.image
-           
             
           }else{
             console.log("MASUK KESANA")
             curImg = wmo[curCode].day.image
             curDesc = wmo[curCode].night.description
-            document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/71/32/d2/7132d24e46182c47ceca0c63470fea70.jpg')";
+            // document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/71/32/d2/7132d24e46182c47ceca0c63470fea70.jpg')";
             // document.body.style = "background-repeat: none;background-size: none;"
-            document.body.style = "background: linear-gradient(to right, #b487e5, #101114);"
+            // document.body.style = "background: linear-gradient(to right, #b487e5, #101114);"
           }
           
           //   console.log("JALAN WOII");
