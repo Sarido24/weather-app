@@ -389,8 +389,8 @@ async function fetchData(position) {
             <p>${day}</p>
             <img src="${wmo[dailyWeatherCode].night.image}" alt="Weather Icon">
             <div class="daily-tem">
-              <p style="font-weight:bold;">Max: ${temMax}&nbsp<span>${temMaxUnit}</span></p>
-              <p>Min: ${temMin} <span>${temMinUnit}</span></p>
+              <p style="font-weight:bold;">Max: ${temMax}&nbsp${temMaxUnit}</p>
+              <p>Min: ${temMin}&nbsp${temMinUnit}</p>
             </div>
             
             </div>
