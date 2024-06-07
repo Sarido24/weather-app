@@ -6,6 +6,81 @@
     <title>Weather App</title>
 </head>
 <body>
-    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div style="text-align: center; color: aliceblue;opacity: 50%; margin-top: 20%" id="loading">
+        <h1>loading....</h1>       
+    </div>
+    <p style="text-align: center;" id="error"></p>
+        
+    <div id="content">
+        <div style="display: flex; width: 90%; justify-content: end; gap: 3px;">
+            <button class="btn-mode" style="display: none;" id="dark" onclick="changeToDark()">Dark Mode</button>
+            <button class="btn-mode" id="light" onclick="changeToLight()">Light Mode</button>
+        </div>
+    <header>
+        <div class="container">
+            <h1>weather info</h1>
+            <p id="time"></p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search city" id="city-input">
+                <button id="but-search" onclick="fetchData()">Search</button>
+            </div>
+            
+        </div>
+    </header>
+    <main>
+        <section class="weather-info">
+            <div class="container">
+                <h2 id="city-name"></h2>
+                <div class="current-wrap">
+                <div class="current-weather" >
+                    <div class="weather-icon" id="weather-icon">
+                    </div>
+                    <div class="weather-details">
+                        <p id="temperature"></p>
+                        <p id="description"></p>
+                    </div>
+                </div>
+                <div class="other-condition">
+                    <div class="other-item" style="display: flex;">
+                        <h3><i class="fa-solid fa-droplet-percent"></i>Humidity:&nbsp </h3>
+                        <h3 id="humidity"></h3>
+                    </div>
+                    <div class="other-item" style="display: flex;">
+                        <h3>Wind Speed: &nbsp</h3>
+                        <h3 id="wind-speed"> </h3>
+                    </div>
+
+                </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        <section class="forecast">
+            <div class="container">
+                <h3>Weather Prediction</h3>
+                <div class="forecast-grid" id="forecast-grid"></div> <!--the 7 days op prediction-->
+            </div>
+        </section>
+    </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+</body>
+</html>
+
 </body>
 </html>
