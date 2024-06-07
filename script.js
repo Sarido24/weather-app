@@ -288,15 +288,12 @@ function changeToDark(){
    document.body.style = "linear-gradient(to right, rgb(51, 51, 51), #0d0f14);"
 }
 function changeToLight(){
-    console.log("KESINI Light");
     document.getElementById('dark').style.display = "block"
     document.getElementById('light').style.display = "none"
    document.body.style= " background: linear-gradient(to right, rgb(195, 193, 193), #5f86e8);"
 }
 
 const loading = document.getElementById("loading")
-let myLat = "";
-let myLong = "";
 const content = document.getElementById("content")
 const inputSearch = document.getElementById('city-input')
 inputSearch.addEventListener("keypress", function(event) {
@@ -309,10 +306,6 @@ inputSearch.addEventListener("keypress", function(event) {
   }
 });
 
-
-
-
-navigator.geolocation.getCurrentPosition(fetchData);
 
 async function fetchData(position) {
   loading.style.display = "block"
@@ -339,21 +332,20 @@ async function fetchData(position) {
       const lon = responGeoJson.results[0].longitude;
       const responseOpenMeteo = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,is_day,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FBangkok`)
       const responseOpenMeteoJson = await responseOpenMeteo.json()
-      console.log(responseOpenMeteoJson, "<< response Open Meteo Json")
-          const currentTem = responseOpenMeteoJson.current.temperature_2m
-          const currentTemUnit = responseOpenMeteoJson.current_units.temperature_2m
-          const curCode = responseOpenMeteoJson.current.weather_code.toString()
-          const curDay = responseOpenMeteoJson.current.is_day
-          const curHumidity = responseOpenMeteoJson.current.relative_humidity_2m
-          const curHumidityUnit = responseOpenMeteoJson.current_units.relative_humidity_2m
-          const windSpeed = responseOpenMeteoJson.current.wind_speed_10m
-          const windSpeedUnit = responseOpenMeteoJson.current_units.wind_speed_10m
-          let daily = responseOpenMeteoJson.daily
-          let dailyUnits = responseOpenMeteoJson.daily_units
-          let temMaxUnit = dailyUnits.temperature_2m_min
-          let temMinUnit = dailyUnits.temperature_2m_min
-          let curDesc;
-          let curImg;
+      const currentTem = responseOpenMeteoJson.current.temperature_2m
+      const currentTemUnit = responseOpenMeteoJson.current_units.temperature_2m
+      const curCode = responseOpenMeteoJson.current.weather_code.toString()
+      const curDay = responseOpenMeteoJson.current.is_day
+      const curHumidity = responseOpenMeteoJson.current.relative_humidity_2m
+      const curHumidityUnit = responseOpenMeteoJson.current_units.relative_humidity_2m
+      const windSpeed = responseOpenMeteoJson.current.wind_speed_10m
+      const windSpeedUnit = responseOpenMeteoJson.current_units.wind_speed_10m
+      let daily = responseOpenMeteoJson.daily
+      let dailyUnits = responseOpenMeteoJson.daily_units
+      let temMaxUnit = dailyUnits.temperature_2m_min
+      let temMinUnit = dailyUnits.temperature_2m_min
+      let curDesc;
+      let curImg;
           if(responseOpenMeteoJson.current){
             content.style.display = "block"
             loading.style.display = "none"
@@ -362,17 +354,12 @@ async function fetchData(position) {
 
         }
           if(curDay === 1){
-            console.log("MASUK KESINI");
             curDesc =  wmo[curCode].day.description
             curImg = wmo[curCode].day.image
             
           }else{
-            console.log("MASUK KESANA")
             curImg = wmo[curCode].day.image
             curDesc = wmo[curCode].night.description
-            // document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/71/32/d2/7132d24e46182c47ceca0c63470fea70.jpg')";
-            // document.body.style = "background-repeat: none;background-size: none;"
-            // document.body.style = "background: linear-gradient(to right, #b487e5, #101114);"
           }
           
           //   console.log("JALAN WOII");
@@ -383,7 +370,6 @@ async function fetchData(position) {
           document.getElementById("time").innerHTML = date    
           document.getElementById("humidity").innerHTML = `${curHumidity} ${curHumidityUnit}`  
           document.getElementById("wind-speed").innerHTML =`${windSpeed} ${windSpeedUnit }`     
-          // document.getElementById("wind-speed").innerHTML = windSpeedUnit   
           document.getElementById("forecast-grid").innerHTML = ""
           
           const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
