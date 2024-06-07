@@ -285,7 +285,7 @@ const wmo = {
 function changeToDark(){
   document.getElementById('dark').style.display = "none"
   document.getElementById('light').style.display = "block"
-   document.body.style = "linear-gradient(to right, rgb(51, 51, 51), #0d0f14);"
+  document.body.style = "background: linear-gradient(to right, rgb(51, 51, 51), #0d0f14);"
 }
 function changeToLight(){
     document.getElementById('dark').style.display = "block"
